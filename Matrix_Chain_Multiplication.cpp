@@ -6,7 +6,7 @@ int main(void){
     int n;
     cin>>n;
     
-    int c[n];
+    int c[n+1];
     for(int i=0;i<n;i++) cin>>c[i]>>c[i+1];
     
     int mat[n][n]; 
