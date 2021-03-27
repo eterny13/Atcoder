@@ -5,32 +5,31 @@ int main(void){
   int n;
   cin>>n;
 
-  vector<int> A(n);
-  vector<vector<int> > dp(n+1, vector<int> (n+1,0));
-  int l = 0;
-  for(int i=0;i<n;i++){
-    int t;
-    cin>>t;
+  vector<int> dp(n);
 
-    if(i == 0){
-      A[0] = t;
+  int L = 0;
+  for(int i=0;i<n;i++){
+    int a;
+    cin>>a;
+    if(i==0) {
+      dp[L] = a;
+      continue;
     }
-    else{
-      if(A[l] < t){
-        l++;
-        A[l] = t;
-      }
-      else {
-        for(int j=0;j<=l;j++){
-          if(A[j] >= t){
-            A[j] = t;
-            break;
-          }
+
+    if(dp[L] < a){
+      L++;
+      dp[L] = a;
+    }else{
+      for(int j=0;j<=L;j++){
+        if(dp[j] >= a){
+          dp[j] = a;
+          break;
         }
       }
     }
   }
 
-  cout << l + 1 << endl;
-
+  for(int i=0;i<n;i++) cout << dp[i] << " ";
+  cout<<endl;
+  cout << L + 1 << endl;
 }
