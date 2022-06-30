@@ -8,14 +8,14 @@ void dijkstra(vector<vector<pair<int,int>>> g, vector<int> &costs, int s, int t)
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int,int>>> q;
     
     //if(s==t) return 0;
-    // node_id , cost
-    q.push(make_pair(s, 0));
+    // cost, node_id
+    q.push(make_pair(0, s));
     costs[s] = 0;
     
     
     while(!q.empty()){
-        int now = q.top().first;
-        int cost = q.top().second;
+        int now = q.top().second;
+        int cost = q.top().first;
         q.pop();
         
         for(int i=0; i < g[now].size(); i++){
@@ -25,7 +25,7 @@ void dijkstra(vector<vector<pair<int,int>>> g, vector<int> &costs, int s, int t)
             if(costs[nxt] > cost + nxt_cost){
                 //cout << next << endl;
                 costs[nxt] = cost + nxt_cost;
-                q.push(make_pair(nxt, costs[nxt]));
+                q.push(make_pair(costs[nxt], nxt));
             }
         }
     }
@@ -33,7 +33,7 @@ void dijkstra(vector<vector<pair<int,int>>> g, vector<int> &costs, int s, int t)
 
 int main(void){
     // Your code here!
-    const int INF = (1 << 30);
+    const int INF = 10e10;
     
     int n,m;
     cin>>n>>m;
