@@ -1,0 +1,12 @@
+{
+  "name": "Haskell Stack Dev",
+  "build": { "dockerfile": "Dockerfile" },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "haskell.haskell"
+      ]
+    }
+  },
+  "remoteUser": "vscode"
+}
